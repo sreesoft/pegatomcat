@@ -19,9 +19,9 @@ RUN apt-get install -y vim
 
 # install tomcat packages
 RUN useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
-RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.37/bin/apache-tomcat-9.0.37.tar.gz -O /tmp/tomcat.tar.gz
+RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.0/bin/apache-tomcat-10.0.0.tar.gz -O /tmp/tomcat.tar.gz
 RUN cd /tmp && tar xvfz tomcat.tar.gz
-RUN cp -Rv /tmp/apache-tomcat-9.0.37/* /opt/tomcat/
+RUN cp -Rv /tmp/apache-tomcat-10.0.0/* /opt/tomcat/
 EXPOSE 8080
 
 COPY ./postgresql-42.2.14.jar /opt/tomcat/lib
