@@ -15,6 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
+
 <!-- The contents of this file will be loaded for each web application -->
 <Context>
 
@@ -24,45 +25,77 @@
     <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
-    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
-    <!--
-    <Manager pathname="" />
--->
-
+    <!-- All Datasource definitions are below -->
     <Resource name="jdbc/PegaRULES" auth="Container"
             type="javax.sql.DataSource"
             driverClassName="org.postgresql.Driver"
             url="jdbc:postgresql://pegapostgres:5432/postgres"
             username="postgres"
-            password="password"
+            password="postgres"
             maxTotal="100"
             maxIdle="30"
             maxWaitMillis="10000"
      />
 
-     <Resource name="jdbc/mktDataSource" auth="Container"
-	    type="javax.sql.DataSource"
-	    driverClassName="org.postgresql.Driver"
+    <!-- Pega Rules Read Only Data Source is used for Query Runner, Change below credentials if you have different user/credentials -->       
+    <Resource name="jdbc/PegaRULESReadOnly" auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="org.postgresql.Driver"
             url="jdbc:postgresql://pegapostgres:5432/postgres"
             username="postgres"
-            password="password"
+            password="postgres"
             maxTotal="100"
             maxIdle="30"
             maxWaitMillis="10000"
+     />
+
+     <!-- Enable the below Data Sources in case of Pega Marketing Install -->
+     <!--
+     <Resource name="jdbc/mktDataSource" auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="org.postgresql.Driver"
+            url="jdbc:postgresql://pegapostgres:5432/postgres"
+            username="postgres"
+            password="postgres"
+            maxTotal="100"
+            maxIdle="30"
+            maxWaitMillis="10000"
+            connectionProperties="currentSchema=externalmktdata"
       />
 
+     <Resource name="jdbc/ihDataSource" auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="org.postgresql.Driver"
+            url="jdbc:postgresql://pegapostgres:5432/postgres"
+            username="postgres"
+            password="postgres"
+            maxTotal="100"
+            maxIdle="30"
+            maxWaitMillis="10000"
+            connectionProperties="currentSchema=pegaih"
+      />
+
+     <Resource name="jdbc/customerDataSource" auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="org.postgresql.Driver"
+            url="jdbc:postgresql://pegapostgres:5432/postgres"
+            username="postgres"
+            password="postgres"
+            maxTotal="100"
+            maxIdle="30"
+            maxWaitMillis="10000"
+            connectionProperties="currentSchema=customerdata"
+      />
+
+    -->
 
 
-<Environment name="prconfig/database/databases/PegaRULES/defaultSchema"
-	        value="rules" type="java.lang.String"/>
-<Environment name="prconfig/database/databases/PegaDATA/defaultSchema"
-	        value="data" type="java.lang.String"/>
+<Environment name="prconfig/database/databases/PegaRULES/defaultSchema" value="rules" type="java.lang.String"/>
+<Environment name="prconfig/database/databases/PegaDATA/defaultSchema" value="data" type="java.lang.String"/>
 
-<Environment name="url/initialization/explicittempdir"
-	        value="/pega/temp" type="java.lang.String"/>
+<Environment name="url/initialization/explicittempdir" value="/pega/temp" type="java.lang.String"/>
 
 <!-- Uncomment this to disable session persistence across Tomcat restarts -->
 <Manager pathname="" />
-  
 	    
 </Context>
