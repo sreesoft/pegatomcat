@@ -31,6 +31,7 @@ RUN mkdir /pega/logs
 RUN mkdir /pega/index
 RUN mkdir /pega/temp
 RUN mkdir /pega/cassandra_data
+RUN mkdir /pega/app
 
 COPY ./context.xml /usr/local/tomcat/conf
 COPY ./tomcat-users.xml /usr/local/tomcat/conf
