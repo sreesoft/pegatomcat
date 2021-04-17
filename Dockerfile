@@ -32,11 +32,14 @@ RUN mkdir /pega/index
 RUN mkdir /pega/temp
 RUN mkdir /pega/cassandra_data
 RUN mkdir /pega/app
+RUN mkdir /pega/config
 
 COPY ./context.xml /usr/local/tomcat/conf
 COPY ./tomcat-users.xml /usr/local/tomcat/conf
 COPY ./setenv.sh /usr/local/tomcat/bin
 COPY ./prweb.war /usr/local/tomcat/webapps
+COPY ./prconfig.xml /pega/config
+COPY ./prlog4j2.xml /pega/config
 
 CMD /usr/local/tomcat/bin/catalina.sh run
 
