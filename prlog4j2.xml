@@ -63,9 +63,7 @@
 		</RollingRandomAccessFile>
 		-->
 		<!-- JSON Style Pega Rules Log End -->
-
-		<!-- IKC Logging Configuration End -->
-
+		
 
 		<!-- RollingFile Appender for pegarules PERFORMANCE Alert logs -->
 		<RollingRandomAccessFile  name="ALERT" fileName="${sys:pega.logdir}/PegaRULES-ALERT.log" filePattern="${sys:pega.logdir}/PegaRULES-ALERT-%d{MM-dd-yyyy}-%i.log.gz">
@@ -179,7 +177,14 @@
 
 	<Loggers>
 		<asyncRoot>
-			<AppenderRef ref="CONSOLE"/>
+			<!-- Do not write into console log - Dont want to contaminate the console log -->
+			<!-- <AppenderRef ref="CONSOLE"/> -->
+
+			<!-- Sreesoft specific logging config Start -->
+			<AppenderRef ref="SREESOFT"/>
+			<!-- <AppenderRef ref="JSONAppender"/> -->
+			<!-- Sreesoft specific logging config End -->
+
 			<AppenderRef ref="PEGA"/>
 			<AppenderRef ref="ALERT" level="ALERT"/>
 			<AppenderRef ref="ALERTSECURITY" level="ALERT"/>
