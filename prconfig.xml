@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pegarules>
+	<!-- This is a minimum format prconfig.xml file.  Only the settings which are required to access settings in the database are included.
+	All other settings which were formerly located only in this file are now Data-Admin-System-Settings.      -->
+	<env name="initialization/settingsource" value="merged" />
+
+	<env name="database/databases/PegaRULES/dataSource" value="java:comp/env/jdbc/PegaRULES"/>
+	<env name="database/databases/PegaDATA/dataSource" value="java:comp/env/jdbc/PegaRULES"/>
+
+	<env name="database/databases/PegaRULES/dataSourceReadOnly" value="java:comp/env/jdbc/PegaRULESReadOnly"/>
+	<env name="database/databases/PegaDATA/dataSourceReadOnly" value="java:comp/env/jdbc/PegaRULESReadOnly"/>
+
+	<!-- The below setting is deprecated.
+	A new concept of node classification has been introduced which can be enabled by setting the nodetype via JVM argument, e.g. -DNodeType=BackgroundProcessing -->
+	<!--env name="initialization/nodeclassification" value="Agent" /  -->
+	 
+	<!-- Settings can still be put in this file.  If they are, then the value in this file will override the value in the database
+	for this node.  This is useful for settings which are specific to this node and should not be shared by multiple nodes on this
+	system. -->
+	
+	<!--
+	Pegasystems recommends that you use Application Server connection pooling to the database for Websphere and 
+		Weblogic.  These examples are provided if you need to use Pega Connection Pooling for Tomcat or for testing purposes.
+		If you are using Application server connection pooling, there is no longer a need to edit this file.  
+		
+		****The new format for this file is only valid if you are using Application Server connection pooling. If you are not, please replace
+		this file with an older version. ***
+		
+	
+	Oracle 10g (Type 4) oracle.jdbc.OracleDriver                jdbc:oracle:thin:@serverName:1521:db  
+	IBM DB/2 Type 4     com.ibm.db2.jcc.DB2Driver               jdbc:db2://serverName:port/dbName
+	SQL Server 2005     com.microsoft.sqlserver.jdbc.SQLServerDriver jdbc:sqlserver://serverName:1433;SelectMethod=cursor;SendStringParametersAsUnicode=false
+	-->
+	
+	<!--
+	<env name="database/drivers" value="com.microsoft.sqlserver.jdbc.SQLServerDriver;oracle.jdbc.OracleDriver" />
+	<env name="database/databases/PegaRULES/url" value="jdbc:sqlserver://serverName:1433;SelectMethod=cursor;SendStringParametersAsUnicode=false" />
+	<env name="database/databases/PegaRULES/userName" value="a_username" />
+	<env name="database/databases/PegaRULES/password" value="a_password" />
+	
+	<env name="database/databases/PegaDATA/url" value="jdbc:sqlserver://serverName:1433;SelectMethod=cursor;SendStringParametersAsUnicode=false" />
+	<env name="database/databases/PegaDATA/userName" value="a_username" />
+	<env name="database/databases/PegaDATA/password" value="a_password" />
+	-->
+</pegarules>
