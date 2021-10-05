@@ -5,8 +5,8 @@ JAVA_OPTS="$JAVA_OPTS -Xms4096M -Xmx8192M -XX:MaxMetaspaceSize=768M"
 
 
 ## GC Logs & Other GC Settings are here ####
-JAVA_OPTS="$JAVA_OPTS -verbose:gc -Xloggc:/pega/logs/gc_%t.log"
-JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=50 -XX:GCLogFileSize=5M"
+JAVA_OPTS="$JAVA_OPTS -verbose:gc -Xlog:gc:/pega/logs/gc_%t.log,time,level,tags,filecount=50,filesize=5M"
+#JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=50 -XX:GCLogFileSize=5M"
 #JAVA_OPTS="$JAVA_OPTS -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
 #JAVA_OPTS="$JAVA_OPTS -XX:TargetSurvivorRatio=90 -XX:+DisableExplicitGC"
 #JAVA_OPTS="$JAVA_OPTS -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=80"
