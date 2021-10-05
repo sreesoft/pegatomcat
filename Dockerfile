@@ -1,6 +1,6 @@
 # Dockerfile
-# base tomcat image - tomcat version 9.0.41 with jdk15
-FROM tomcat:9.0.41-jdk8-openjdk
+# base tomcat image - tomcat latest version with jdk11
+FROM tomcat:jdk11-openjdk
 
 # install support/utility packages 
 #RUN yum update -y
